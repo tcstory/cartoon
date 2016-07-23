@@ -15,11 +15,11 @@ process.argv.forEach(function (item) {
 
 module.exports = {
     entry: {
-        app: ['./src/pages/index/index.js'],
+        app: ['./src/pages/app/app.js'],
         'vue-libs': ['vue']
     },
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve('./dist'),
         publicPath: '/',
         filename: 'js/[name].js',
         chunkFilename: "js/chunk/[name].js"
@@ -30,9 +30,13 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.js?$/,
+                test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue'
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
@@ -54,7 +58,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/pages/index/index.html',
+            template: './src/pages/app/app.html',
             filename: 'index.html',
             inject: 'body'
         }),
