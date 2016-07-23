@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+require('../../components/base-css/index.scss');
+
 import Index from '../index/index.vue';
 Vue.use(VueRouter);
 

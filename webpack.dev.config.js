@@ -4,6 +4,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var precss = require('precss');
 var autoprefixer = require('autoprefixer');
+var postPxToEm= require('postcss-px-to-em');
 
 process.argv.forEach(function (item) {
     if (item === 'auto') {
@@ -74,7 +75,12 @@ module.exports = {
         })
     ],
     postcss: function () {
-        return [precss, autoprefixer];
+        return [precss, autoprefixer, postPxToEm({base: 16})];
+    },
+    vue: {
+        postcss: function () {
+            return [precss, autoprefixer, postPxToEm({base: 16})];
+        }
     }
 };
 
