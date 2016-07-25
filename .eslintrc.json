@@ -20,5 +20,8 @@
             "error",
             "unix"
         ]
-    }
+    },
+    "plugins": [
+        "html"
+    ]
 }

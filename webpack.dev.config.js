@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var postPxToEm= require('postcss-px-to-em');
+var postPxToEm = require('postcss-px-to-em');
 
 process.argv.forEach(function (item) {
     if (item === 'auto') {
@@ -27,6 +27,21 @@ module.exports = {
         root: path.join(__dirname, 'node_modules')
     },
     module: {
+        preLoaders: [
+            {
+                test: /.vue$/,
+                loader: 'eslint',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "eslint"
+            },
+        ],
+        eslint: {
+            failOnError: true
+        },
         loaders: [
             {
                 test: /\.js$/,
