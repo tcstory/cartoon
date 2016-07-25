@@ -1,11 +1,7 @@
 <template>
-    <section class="img-slider">
-        <ul class="wrapper">
-            <li  v-for="item in comics.slice(0,6)" class="item">
-                <img :src="item.preview" alt="">
-            </li>
-        </ul>
-    </section>
+    <article class="index-page">
+        <search-bar></search-bar>
+    </article>
 </template>
 
 <style lang="sass" scoped rel="stylesheet/scss">
@@ -25,17 +21,21 @@
 </style>
 
 <script>
-    import Data from '../../components/data';
+//    import Data from '../../components/data';
+    import SearchBar from './components/search-bar/index.vue'
     export default {
         data() {
             return {
                 comics: []
             }
         },
+        components: {
+            'search-bar': SearchBar
+        },
         ready() {
-            Data.getHotComics().then((res) => {
-                this.comics = res.body;
-            })
+//            Data.getHotComics().then((res) => {
+//                this.comics = res.body;
+//            })
         }
     }
 </script>
